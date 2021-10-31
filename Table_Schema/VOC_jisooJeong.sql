@@ -75,8 +75,6 @@ CREATE TABLE `VOC` (
 	`VOC_RECENT`	TIMESTAMP	NULL,
 	`EID`	BIGINT	NOT NULL,
 	`CLAIM_ID`	BIGINT	NOT NULL,
-	`DRIVER_ID`	BIGINT	NOT NULL,
-	`RETAIL_ID`	BIGINT	NOT NULL,
     -- -1: 귀책사유 조사하지 않았음 0: 귀책사유 조사하는 중, 1: 귀책사유 조사 완료
     CHECK (`REASON_CHK` IN('-1','0','1')),
     -- R: 운송사 책임 D: 기사 책임
