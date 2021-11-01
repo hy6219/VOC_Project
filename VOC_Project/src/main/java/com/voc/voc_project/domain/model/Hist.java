@@ -8,27 +8,29 @@ import java.time.LocalDateTime;
 /**
  * @author  jisooJeong
  * */
-@Table(name="REIM")
+@Table(name="VOC_HIST")
 @Entity
 @NoArgsConstructor
 @Data
 @ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
-public class Reim {
+public class Hist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="REIM_ID")
-    private Long reimId;
+    @Column(name="HIST_ID")
+    private Long histId;
 
-    @Column(name="REIM_DATE")
+    @Column(name="HIST_REGDATE")
     private LocalDateTime regDate;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="VOC_ID")
+    @ToString.Exclude
     private VOC voc;
 
     @PrePersist
-    public void setPersistDate(){
+    @PostUpdate
+    public void updateDateForHistoryData(){
         this.setRegDate(LocalDateTime.now());
     }
 }

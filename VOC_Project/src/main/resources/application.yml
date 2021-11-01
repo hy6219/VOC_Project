@@ -1,5 +1,8 @@
 server:
   port: 8089
+  servlet:
+    encoding:
+      force: true
 spring:
   h2:
     console:
