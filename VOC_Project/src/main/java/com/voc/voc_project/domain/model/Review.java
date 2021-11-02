@@ -12,11 +12,10 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="REVIEW_ID")
     private Long reviewId;
 

@@ -2109,7 +2109,7 @@
 											"top": 794,
 											"width": 300.9931640625,
 											"height": 13,
-											"text": "-Hist: hist --히스토리 정보",
+											"text": "-ArrayList: hist --히스토리 정보 Hist ArrayList",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6572,9 +6572,9 @@
 							"_parent": {
 								"$ref": "AAAAAAF81oVYu733s8E="
 							},
-							"name": "Hist",
+							"name": "ArrayList",
 							"visibility": "private",
-							"type": "hist --히스토리 정보"
+							"type": "hist --히스토리 정보 Hist ArrayList"
 						},
 						{
 							"_type": "UMLAttribute",

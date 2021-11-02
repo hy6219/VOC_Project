@@ -17,19 +17,20 @@ import javax.transaction.Transactional;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class CsControllerTest {
+class BusinessControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void test() throws Exception {
+    public void searchOurClient() throws Exception {
         mockMvc.perform(
-                MockMvcRequestBuilders.get("http://localhost:8089/cs/matching").param("part","0")
+                MockMvcRequestBuilders.get("http://localhost:8089/business/search/client").param("businessName","STEAK")
         ).andExpect(
                 MockMvcResultMatchers.status().is2xxSuccessful()
         ).andDo(
                 MockMvcResultHandlers.print()
         );
     }
+
 }

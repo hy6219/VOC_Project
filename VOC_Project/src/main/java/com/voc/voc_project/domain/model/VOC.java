@@ -1,21 +1,22 @@
 package com.voc.voc_project.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-@Table(name="VOC")
+@Table(name="voc")
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class VOC {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="VOC_ID")
     private Long vocId;
 
@@ -51,19 +52,31 @@ public class VOC {
     @ToString.Exclude
     private CS employee;
 
-    @ManyToOne
-    @JoinColumn(name="CLAIM_ID")
+
+    @OneToOne(mappedBy = "voc")
+    @ToString.Exclude
+    private Reim reim;
+
+    @JsonManagedReference
+    @OneToOne
     @ToString.Exclude
     private Claim claim;
 
 
     @OneToOne(mappedBy = "voc")
     @ToString.Exclude
-    private Reim reim;
-
-    @OneToOne(mappedBy = "voc")
-    @ToString.Exclude
     private Review review;
+
+    @ManyToOne
+    @JoinColumn(name="DRIVER_ID")
+    @ToString.Exclude
+    private Driver driver;
+
+    @ManyToOne
+    @JoinColumn(name="RETAIL_ID")
+    @ToString.Exclude
+    private Retail retail;
+
     /*
     이벤트리스너를 이용해서 날짜는 자동세팅될 수 있도록 설정
     * */

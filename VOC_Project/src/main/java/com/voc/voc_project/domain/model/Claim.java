@@ -1,5 +1,7 @@
 package com.voc.voc_project.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,16 +9,15 @@ import javax.persistence.*;
 /**
  * @author  jisooJeong
  * */
-@Table(name="CLAIM")
+@Table(name="claim")
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class Claim {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="CLAIM_ID")
     private Long claimId;
 
@@ -34,17 +35,8 @@ public class Claim {
     @ToString.Exclude
     private Business business;
 
-    @ManyToOne
-    @JoinColumn(name="RETAIL_ID")
-    @ToString.Exclude
-    private Retail retail;
-
-    @ManyToOne
-    @JoinColumn(name="DRIVER_ID")
-    @ToString.Exclude
-    private Driver driver;
-
-    @ManyToOne
+    @JsonBackReference
+    @OneToOne(mappedBy = "claim")
     @ToString.Exclude
     private VOC voc;
 }

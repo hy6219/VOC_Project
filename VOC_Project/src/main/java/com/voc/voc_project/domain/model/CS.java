@@ -11,12 +11,11 @@ import java.util.ArrayList;
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class CS {
     @ApiModelProperty(value="고객 지원부 식별자")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="EID")
     private Long eId;
 

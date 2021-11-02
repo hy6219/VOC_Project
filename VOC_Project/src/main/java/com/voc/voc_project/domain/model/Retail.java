@@ -12,11 +12,10 @@ import java.util.ArrayList;
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class Retail {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="RETAIL_ID")
     private Long retailId;
 

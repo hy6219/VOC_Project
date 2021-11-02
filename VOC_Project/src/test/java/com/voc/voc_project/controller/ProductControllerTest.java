@@ -11,25 +11,25 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import javax.transaction.Transactional;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@Transactional
-class CsControllerTest {
+class ProductControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void test() throws Exception {
+    public void searchProductsByBusinessName() throws Exception {
         mockMvc.perform(
-                MockMvcRequestBuilders.get("http://localhost:8089/cs/matching").param("part","0")
+                MockMvcRequestBuilders.get("http://localhost:8089/products/searchBy/business").param("businessName","TIMF")
         ).andExpect(
                 MockMvcResultMatchers.status().is2xxSuccessful()
         ).andDo(
                 MockMvcResultHandlers.print()
         );
     }
+
 }

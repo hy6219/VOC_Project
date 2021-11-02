@@ -9,12 +9,11 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="PRODUCT_ID")
     private Long productId;
 
@@ -35,6 +34,5 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name="BUSINESS_ID")
-    @ToString.Exclude
     private Business business;
 }

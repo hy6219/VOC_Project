@@ -9,7 +9,6 @@ import java.util.ArrayList;
 @Entity
 @NoArgsConstructor
 @Data
-@ToString(callSuper = false)
 @EqualsAndHashCode(callSuper = false)
 public class Business {
 
