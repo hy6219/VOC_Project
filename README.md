@@ -2,6 +2,15 @@
 # VOC 서비스 구축
 
 by Jisoo Jeong
+
+- 해당 프로젝트를 실행하기 전, 
+1. `yml파일의 username, password`를 확인해주세요
+- 사용 중인 username과 password를 기재해주세요
+2. `create database VOC_Project;` 를 콘솔에서 입력부탁드립니다
+3. `아래의 더미 데이터 생성을 위한 쿼리를 복사 및 붙여넣기 하여 콘솔에서 미리 생성부탁드립니다`
+
+😊확인해주셔서 감사합니다😊
+
 ## 진행하면서 배울 수 있었던 점
 
 1. JPA 엔티티 → json 변환 시 발생하는 무한루프로 인한 StackOverflowError
@@ -15,6 +24,10 @@ by Jisoo Jeong
 - [ERD 설계](https://github.com/hy6219/VOC_Project/blob/main/ERD%20%26%20Class%20Diagram/VOC_%EC%A0%95%EC%A7%80%EC%88%98_ERD%EC%84%A4%EA%B3%84.png)
 - [테이블 스키마](https://github.com/hy6219/VOC_Project/blob/main/Table_Schema/VOC_jisooJeong.sql)
 - [클래스 다이어그램](https://github.com/hy6219/VOC_Project/blob/main/ERD%20%26%20Class%20Diagram/VOC_%EC%A0%95%EC%A7%80%EC%88%98_%ED%81%B4%EB%9E%98%EC%8A%A4%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8_%EC%B4%88%EC%95%88.png)
+
+## Source Code
+
+[소스코드](https://github.com/hy6219/VOC_Project/tree/main/VOC_Project)
 
 ## 더미 데이터
 1. CS팀 직원 더미 데이터
@@ -73,14 +86,30 @@ values(10,0,'화물15','A133','2021-05-20','Y',5);
 4. 클레임 더미 데이터
 ```sql
 insert into claim(claim_id, claim_type, claim_content, claim_reimburse, business_id)  
-values(1,0,'배송지연','Y',1);
+values(1,0,'배송지연','Y',1);  
+insert into claim(claim_id, claim_type, claim_content, claim_reimburse, business_id)  
+values(2,0,'배송지연','Y',2);  
+insert into claim(claim_id, claim_type, claim_content, claim_reimburse, business_id)  
+values(3,2,'식자재 물품 건수 부족','Y',3);  
+insert into claim(claim_id, claim_type, claim_content, claim_reimburse, business_id)  
+values(4,1,'신선식품 상태 불량','Y',4);  
+insert into claim(claim_id, claim_type, claim_content, claim_reimburse, business_id)  
+values(5,0,'배송지연','Y',5);
 ```
 5. Retail 더미 데이터
 ```sql
 insert into retail(retail_id, retail_name, ceo, retail_pubtel, retail_addr)  
 values(1,'-','-','-','-');  
 insert into retail(retail_id, retail_name, ceo, retail_pubtel, retail_addr)  
-values(2,'HELLO','감자빵','123-456-789','다다다 라라라 마마마');
+values(2,'HELLO','감자빵','123-456-789','다다다 라라라 마마마');  
+insert into retail(retail_id, retail_name, ceo, retail_pubtel, retail_addr)  
+values(3,'CAKE','케이크','125-456-789','다다 라라라 마마마');  
+insert into retail(retail_id, retail_name, ceo, retail_pubtel, retail_addr)  
+values(4,'HAMBURGER','햄버거','223-456-789','파다다 라라라 마마마');  
+insert into retail(retail_id, retail_name, ceo, retail_pubtel, retail_addr)  
+values(5,'HI','하이테크','133-456-789','다다카 라라라 마마마');  
+insert into retail(retail_id, retail_name, ceo, retail_pubtel, retail_addr)  
+values(6,'ABC','ABC','153-456-789','다다다 파라라 마마마');
 ```
 6. Driver 더미데이터
 ```sql
@@ -91,17 +120,97 @@ values (2,'고구마빵','111-222-333','라마바 사아자 차카타',3000000,3
 insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
 values (3,'불고기피자','113-222-333','라바바 사아자 차카타',3000000,3000000,2);  
 insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
-values (4,'탕수육','311-222-333','라바 사아자 차카타',3000000,3000000,2);
+values (4,'탕수육','311-222-333','라바 사아자 차카타',3000000,3000000,2);  
+insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
+values (5,'화전','333-222-333','라마바 사아자 차타타',3000000,3000000,3);  
+insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
+values (6,'양파빵','113-225-333','파바파 사아자 차카타',3000000,3000000,3);  
+insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
+values (7,'감자전','311-222-333','라가바 사아자 차카타',3000000,3000000,4);  
+insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
+values (8,'카스테라','315-222-333','라바바 사아자 차카타',3000000,3000000,5);  
+insert into driver(driver_id, driver_name, driver_tel, driver_addr, driver_salary, driver_clsal, retail_id)  
+values (9,'치킨','311-222-363','파파바 사아자 차카타',3000000,3000000,6);
 ```
 
 7. VOC 더미데이터
 ```sql
 insert into voc(voc_id, reason_chk, driver_chk, driver_pchk, driver_disagree, voc_regdate, voc_recent, eid, claim_id,retail_id,driver_id)  
-values (1,'-1','-1','-1','N',SYSDATE(),SYSDATE(),1,1,1,1);
+values (1,'-1','-1','-1','N',SYSDATE(),SYSDATE(),1,1,1,1);  
+insert into voc(voc_id, reason_chk, driver_chk, driver_pchk, driver_disagree, voc_regdate, voc_recent, eid, claim_id,retail_id,driver_id)  
+values (2,'-1','-1','-1','N',SYSDATE(),SYSDATE(),2,2,1,1);  
+insert into voc(voc_id, reason_chk, driver_chk, driver_pchk, driver_disagree, voc_regdate, voc_recent, eid, claim_id,retail_id,driver_id)  
+values (3,'-1','-1','-1','N',SYSDATE(),SYSDATE(),3,3,1,1);  
+insert into voc(voc_id, reason_chk, driver_chk, driver_pchk, driver_disagree, voc_regdate, voc_recent, eid, claim_id,retail_id,driver_id)  
+values (4,'-1','-1','-1','N',SYSDATE(),SYSDATE(),1,4,1,1);  
+insert into voc(voc_id, reason_chk, driver_chk, driver_pchk, driver_disagree, voc_regdate, voc_recent, eid, claim_id,retail_id,driver_id)  
+values (5,'-1','-1','-1','N',SYSDATE(),SYSDATE(),2,5,1,1);
 ```
 
 8. VOC 히스토리 더미데이터
 ```sql
 insert into voc_hist(hist_id, hist_regdate, voc_id)  
-values (1,sysdate(),1);
+values (1,sysdate(),1);  
+insert into voc_hist(hist_id, hist_regdate, voc_id)  
+values (2,sysdate(),2);  
+insert into voc_hist(hist_id, hist_regdate, voc_id)  
+values (3,sysdate(),3);  
+insert into voc_hist(hist_id, hist_regdate, voc_id)  
+values (4,sysdate(),4);  
+insert into voc_hist(hist_id, hist_regdate, voc_id)  
+values (5,sysdate(),5);
 ```
+9. 배상 처리 데이터
+```sql
+update voc  
+set reason_chk=1,voc_target='R',voc_penalty='조사완료',voc_reim='100000',  
+    driver_chk='-1',driver_pchk='-1',driver_disagree='-1'  
+where voc_id=1;  
+  
+insert into voc_hist  
+values (6,sysdate(),1);   
+  
+insert into reim(reim_id, reim_date, voc_id)  
+values(1,sysdate(),1);  
+  
+##배상2  
+update voc  
+set reason_chk=1,voc_target='D',voc_penalty='조사완료',voc_reim='100000',  
+       driver_chk='0',driver_pchk='0',driver_disagree='N'  
+where voc_id=2;  
+  
+insert into voc_hist  
+values (7,sysdate(),2);  
+  
+insert into reim(reim_id, reim_date, voc_id)  
+values(2,sysdate(),2);
+``` 
+
+10. 검토 처리 더미 데이터
+```sql
+update voc  
+set reason_chk=1,voc_target='D',voc_penalty='조사중',voc_reim='100000',  
+       driver_chk='0',driver_pchk='0',driver_disagree='Y'  
+where voc_id=3;  
+  
+insert into voc_hist  
+values (8,sysdate(),3);  
+  
+insert into review(review_id, review_regdate, voc_id)  
+values (1,sysdate(),3);  
+  
+update voc  
+set reason_chk=1,voc_target='D',voc_penalty='조사중',voc_reim='100000',  
+       driver_chk='0',driver_pchk='0',driver_disagree='Y'  
+where voc_id=4;  
+  
+insert into voc_hist  
+values (9,sysdate(),4);  
+  
+insert into review(review_id, review_regdate, voc_id)  
+values (2,sysdate(),4);
+```
+
+## jacoco 결과지 위치
+
+만약 다운로드를 받으셨다면, /VOC_Project/build/reports/tests/test/index.html를 확인해주시면 감사하겠습니다!
