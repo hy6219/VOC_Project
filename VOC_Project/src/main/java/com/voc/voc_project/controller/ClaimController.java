@@ -6,12 +6,13 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
-@Api(tags = "클레임 API")
+@Api(tags = "클레임 등록(VOC 및 히스토리 포함 등록), 조회 API")
 @RestController
 @RequestMapping("/claim")
 public class ClaimController {
@@ -24,8 +25,8 @@ public class ClaimController {
 
     @ApiOperation(value="고객사의 클레임 등록")
     @ApiImplicitParam(name="claim",value="고객사 정보를 포함한 클레임 정보")
-    @PostMapping("/register")
-    public void saveClaim(@RequestBody Claim claim,@RequestParam String businessName){
+    @PostMapping(value = "/register/{businessName}",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void saveClaim(@ModelAttribute Claim claim,@PathVariable(name="businessName") String businessName){
         claimService.saveClaim(claim,businessName);
     }
 

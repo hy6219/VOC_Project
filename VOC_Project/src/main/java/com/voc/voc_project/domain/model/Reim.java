@@ -1,5 +1,6 @@
 package com.voc.voc_project.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,7 @@ public class Reim {
     @Column(name="REIM_DATE")
     private LocalDateTime regDate;
 
+    @JsonManagedReference
     @OneToOne
     @JoinColumn(name="VOC_ID")
     private VOC voc;

@@ -7,6 +7,7 @@ import com.voc.voc_project.domain.model.Business;
 import com.voc.voc_project.domain.model.Claim;
 import com.voc.voc_project.domain.model.VOC;
 import com.voc.voc_project.domain.repository.BusinessRepository;
+import com.voc.voc_project.domain.repository.ClaimRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import javax.transaction.Transactional;
 
 import java.nio.charset.Charset;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,6 +38,8 @@ class ClaimControllerTest {
     private MockMvc mockMvc;
     @Autowired
     private BusinessRepository businessRepository;
+    @Autowired
+    private ClaimRepository claimRepository;
 
     @Test
     public void saveClaimTest() throws Exception {
@@ -53,21 +57,21 @@ class ClaimControllerTest {
         claim.setVoc(voc);
         voc.setClaim(claim);
 
-        MediaType TYPE=new MediaType(MediaType.APPLICATION_JSON, Charset.forName("utf8"));
+        //MediaType TYPE=new MediaType(MediaType.APPLICATION_JSON, Charset.forName("utf8"));
         ObjectMapper mapper=new ObjectMapper().registerModule(new JavaTimeModule());
         String json=mapper.writeValueAsString(claim);
 
         mockMvc.perform(
-                MockMvcRequestBuilders.post("http://localhost:8089/claim/register")
-                        .param("businessName","TIMF")
+                MockMvcRequestBuilders.post("http://localhost:8089/claim/register/TIMF")
+                        .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .content(json)
-                        .contentType(TYPE)
         ).andExpect(
                 MockMvcResultMatchers.status().is2xxSuccessful()
         ).andDo(
                 MockMvcResultHandlers.print()
         );
     }
+
 
     //클레임 조회
     @Test
