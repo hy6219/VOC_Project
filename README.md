@@ -29,6 +29,12 @@ by Jisoo Jeong
 
 [소스코드](https://github.com/hy6219/VOC_Project/tree/main/VOC_Project)
 
+## jacoco 결과, API Documentation
+- jacoco 검증은 JUnit을 이용한 통합테스트 진행 후 진행하였습니다
+
+- [jacoco 테스트 커버리지 검증 결과](https://github.com/hy6219/VOC_Project/blob/main/jacoco_%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%BB%A4%EB%B2%84%EB%A6%AC%EC%A7%80_%ED%99%95%EC%9D%B8.gif)
+- [API 문서화 결과](https://github.com/hy6219/VOC_Project/blob/main/JisooJeong_TF_VOC_Swagger.gif)
+
 ## 더미 데이터
 1. CS팀 직원 더미 데이터
 ```sql
